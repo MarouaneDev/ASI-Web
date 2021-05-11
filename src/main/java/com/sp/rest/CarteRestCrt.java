@@ -1,5 +1,7 @@
 package com.sp.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,12 +34,29 @@ public class CarteRestCrt {
         return c;
     }
 	
+	@RequestMapping(method=RequestMethod.GET,value="/cartes")
+    public List<Carte> listCarte() {
+		List<Carte> allcards = cService.listCarte();
+		if(allcards.isEmpty()) {
+			return null;
+		} else {
+			return allcards;
+		}
+    }
+	
 	@RequestMapping(method=RequestMethod.POST,value="/buy/carte/{cardId}")
     public void buyCard(@PathVariable String cardId, String userId) {
         Carte c = cService.getCarte(Integer.valueOf(cardId));
         User u = uService.getUser(Integer.valueOf(userId));
 		cService.buyCard(c, u);
 		
+    }
+	
+	@RequestMapping(method=RequestMethod.POST,value="/sell/carte/{cardId}")
+    public void sellCard(@PathVariable String cardId, String userId) {
+		Carte c = cService.getCarte(Integer.valueOf(cardId));
+        User u = uService.getUser(Integer.valueOf(userId));
+		cService.sellCard(c, u);
     }
 
 
