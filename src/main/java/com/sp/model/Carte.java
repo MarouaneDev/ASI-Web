@@ -1,5 +1,7 @@
 package com.sp.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +21,8 @@ public class Carte {
 	private int energy;
 	private int attack;
 	private int defence;
+	private long price;
+	private LocalDate lastSoldDate; 
 	
 	public Carte() {
 		
@@ -27,7 +31,7 @@ public class Carte {
 	
 	
 	public Carte(int id, String name, String description, String imgurl, String family, String affinity, int hp,
-			int energy, int attack, int defence) {
+			int energy, int attack, int defence, long price, LocalDate lastSoldDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,14 +43,41 @@ public class Carte {
 		this.energy = energy;
 		this.attack = attack;
 		this.defence = defence;
+		this.price = price;
+		this.lastSoldDate = lastSoldDate;
 	}
 	
-	
+
 	@Override
 	public String toString() {
 		return "Carte [id=" + id + ", name=" + name + ", description=" + description + ", imgurl=" + imgurl
 				+ ", family=" + family + ", affinity=" + affinity + ", hp=" + hp + ", energy=" + energy + ", attack="
-				+ attack + ", defence=" + defence + "]";
+				+ attack + ", defence=" + defence + ", price=" + price + ", lastSoldDate=" + lastSoldDate
+				+ "]";
+	}
+
+
+
+	public long getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(long price) {
+		this.price = price;
+	}
+
+
+
+	public LocalDate getlastSoldDate() {
+		return lastSoldDate;
+	}
+
+
+
+	public void setlastSoldDate(LocalDate lastSoldDate) {
+		this.lastSoldDate = lastSoldDate;
 	}
 
 
