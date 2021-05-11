@@ -21,7 +21,6 @@ public class Carte {
 	private int energy;
 	private int attack;
 	private int defence;
-	private User owner;
 	private long price;
 	private LocalDate lastSoldDate; 
 	
@@ -32,7 +31,7 @@ public class Carte {
 	
 	
 	public Carte(int id, String name, String description, String imgurl, String family, String affinity, int hp,
-			int energy, int attack, int defence, User owner, long price, LocalDate lastSoldDate) {
+			int energy, int attack, int defence, long price, LocalDate lastSoldDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -44,7 +43,6 @@ public class Carte {
 		this.energy = energy;
 		this.attack = attack;
 		this.defence = defence;
-		this.owner = owner;
 		this.price = price;
 		this.lastSoldDate = lastSoldDate;
 	}
@@ -54,20 +52,8 @@ public class Carte {
 	public String toString() {
 		return "Carte [id=" + id + ", name=" + name + ", description=" + description + ", imgurl=" + imgurl
 				+ ", family=" + family + ", affinity=" + affinity + ", hp=" + hp + ", energy=" + energy + ", attack="
-				+ attack + ", defence=" + defence + ", owner=" + owner + ", price=" + price + ", lastSoldDate=" + lastSoldDate
+				+ attack + ", defence=" + defence + ", price=" + price + ", lastSoldDate=" + lastSoldDate
 				+ "]";
-	}
-
-
-
-	public User getOwner() {
-		return owner;
-	}
-
-
-
-	public void setOwner(User owner) {
-		this.owner = owner;
 	}
 
 
