@@ -19,8 +19,6 @@ public class CarteRestCrt {
 	
 	@Autowired
 	CarteService cService;
-	
-	@Autowired
 	UserService uService;
 	
 	@RequestMapping(method=RequestMethod.POST,value="/carte")
