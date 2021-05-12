@@ -11,13 +11,13 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    private int id;
-    private String username;
-    private String email;
-    private String password;
+    protected int id;
+    protected String username;
+    protected String email;
+    protected String password;
     @OneToMany
-    private List<Carte> ownedCards;
-    private long walletAmount;
+    protected List<Carte> ownedCards;
+    protected long walletAmount;
 
     public User() { }
 
@@ -85,15 +85,8 @@ public class User {
         return password;
     }
 
-//    public List<Carte> getOwnedCards() {
-//        return ownedCards;
-//    }
-//
-//    public void setOwnedCards(List<Carte> ownedCards) {
-//        this.ownedCards = ownedCards;
-//    }
-
     public void removeOwnedCard(Carte carte) {
+        if (!this.ownedCards.contains(carte))
         this.ownedCards.remove(carte);
     }
 
@@ -115,7 +108,7 @@ public class User {
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-               // ", ownedCards=" + ownedCards +
+                ", ownedCards=" + ownedCards +
                 ", walletAmount=" + walletAmount +
                 '}';
     }

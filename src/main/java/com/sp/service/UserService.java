@@ -1,27 +1,29 @@
 package com.sp.service;
 
 import com.sp.model.User;
+import com.sp.model.UserDTO;
 import com.sp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserService {
     @Autowired
     UserRepository uRepository;
-    public String login(String username, String password) {
+    @Autowired
+    MapperService mapperService;
+    public boolean login(String username, String password) {
         User user = uRepository.findByUsernameAndPassword(username, password);
-        if (user == null) {
-            return "User not found";
-        }
-        return "User connected";
+        return user != null;
     }
 
-    public String getUser(String username) {
+    public UserDTO getUser(String username) {
         User user = uRepository.findByUsername(username);
-        return user.toString();
+        return mapperService.UserToDTO(user);
+
     }
 
     public String addUser(String username, String email, String password) {
@@ -30,12 +32,22 @@ public class UserService {
         return user.toString();
     }
 
-    public String addUser(User user) {
-        uRepository.save(user);
-        return user.toString();
+    public boolean addUser(User user) {
+        try {
+            uRepository.save(user);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
-    public List<User> listUser() {
-        return (List<User>) uRepository.findAll();
+    public List<UserDTO> listUser() {
+        List<UserDTO> usersDTO = new ArrayList<>();
+        List<User> users = (List<User>) uRepository.findAll();
+        for(User user : users) {
+            UserDTO userDTO = mapperService.UserToDTO(user);
+            usersDTO.add(userDTO);
+        }
+        return usersDTO;
     }
 }
