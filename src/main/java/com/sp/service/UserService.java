@@ -20,10 +20,24 @@ public class UserService {
         return user != null;
     }
 
-    public UserDTO getUser(String username) {
+    public UserDTO getUserDTO(String username) {
         User user = uRepository.findByUsername(username);
         return mapperService.UserToDTO(user);
+    }
 
+    public UserDTO getUserDTO(int userId) {
+        User user = uRepository.findById(userId);
+        return mapperService.UserToDTO(user);
+    }
+
+    public User getUser(String username) {
+        User user = uRepository.findByUsername(username);
+        return user;
+    }
+
+    public User getUser(int userId) {
+        User user = uRepository.findById(userId);
+        return user;
     }
 
     public String addUser(String username, String email, String password) {

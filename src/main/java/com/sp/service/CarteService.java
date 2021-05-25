@@ -50,7 +50,7 @@ public class CarteService {
 			long newBalance = u.decreaseWallet(c.getPrice());
 			u.setWalletAmount(newBalance);
 			c.setlastSoldDate(LocalDate.now());
-			u.addCard(u);
+			u.addOwnedCard(c);
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class CarteService {
 		if(ownedCards.contains(c)) {
 			long newBalance = u.increaseWallet(c.getPrice());
 			u.setWalletAmount(newBalance);
-			u.removeCard(c);
+			u.removeOwnedCard(c);
 		}
 	}
 		

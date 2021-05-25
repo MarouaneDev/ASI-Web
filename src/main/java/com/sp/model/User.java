@@ -69,12 +69,14 @@ public class User {
         return walletAmount;
     }
 
-    public void decreaseWallet(long amount) {
+    public long decreaseWallet(long amount) {
         this.walletAmount -= amount;
+        return this.walletAmount;
     }
 
-    public void increaseWallet(long amount) {
+    public long increaseWallet(long amount) {
         this.walletAmount += amount;
+        return this.walletAmount;
     }
 
     public void setWalletAmount(long walletAmount) {
