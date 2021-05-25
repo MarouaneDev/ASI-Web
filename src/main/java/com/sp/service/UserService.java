@@ -82,4 +82,8 @@ public class UserService {
         User userToCheck = uRepository.findByToken(user.getToken());
         return userToCheck != null;
     }
+
+    public User findByToken(String token) {
+        return uRepository.findByToken(token);
+    }
 }

@@ -37,10 +37,32 @@ function loginCheck() {
             contentType: 'application/json'
         }).done(function (data) {
             if (data) {
-                setCookie("token", data, 1);
                 return true
             } else {
                 $(location).attr('href', '/index.html');
+            }
+        });
+    }
+}
+
+
+function getUser() {
+    if (getCookie('token') == null) {
+        $(location).attr('href', '/index.html');
+    } else {
+        var formData = {
+            "token": getCookie("token")
+        }
+        $.ajax({
+            type: "POST",
+            url: "/user/token",
+            data: JSON.stringify(formData),
+            dataType: "json",
+            contentType: 'application/json'
+        }).done(function (data) {
+            if (data) {
+                $("#userUsername")[0].innerHTML = data['username'];
+                $("#userWallet")[0].innerHTML = data['walletAmount'];
             }
         });
     }

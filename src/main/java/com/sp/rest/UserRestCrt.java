@@ -35,4 +35,9 @@ public class UserRestCrt {
     public boolean loginCheck(@RequestBody User user) {
         return userService.loginCheck(user);
     }
+
+    @RequestMapping(value="/token", method = RequestMethod.POST)
+    public User getUserByToken(@RequestBody User user) {
+        return userService.findByToken(user.getToken());
+    }
 }
