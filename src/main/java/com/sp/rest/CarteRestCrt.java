@@ -43,9 +43,12 @@ public class CarteRestCrt {
     }
 	
 	@RequestMapping(method=RequestMethod.POST,value="/buy/carte/{cardId}")
-    public void buyCard(@PathVariable String cardId, int userId) {
+    public void buyCard(@PathVariable String cardId, @RequestBody User username) {
+		System.out.println("cardId: " + cardId);
         Carte c = cService.getCarte(Integer.valueOf(cardId));
-        User u = uService.getUser(userId);
+		System.out.println("entre carte "+ username.getUsername());
+        User u = uService.getUserByUsername(username.getUsername());
+		System.out.println("UserId: " + u);
 		cService.buyCard(c, u);
 		
     }

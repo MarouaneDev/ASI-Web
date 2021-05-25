@@ -49,6 +49,7 @@
                 <th class="three wide">Description</th>
                 <th>Family</th>
                 <th>HP</th>
+                <th>ID</th>
                 <th>Energy</th>
                 <th>Defence</th>
                 <th>Attack</th>
@@ -62,15 +63,17 @@
                     <td>
                         <img  class="ui avatar image" src="{{img_src}}"> <span>{{name}} </span>
                     </td>
-                    <td >{{description}}</td>
+                    <td>{{description}}</td>
                     <td>{{family_name}}</td>
                     <td>{{hp}}</td>
+                    <td>{{id}}</td>
                     <td>{{energy}}</td>
                     <td>{{defence}}</td>
                     <td>{{attack}}</td>
                     <td>{{price}}</td>
                     <td>
-                        <a onclick="buyCard({{id}})"><div class="ui vertical animated button" tabindex="0"></a>
+                        <button onclick="sellCard({{id}});">Acheter</button>
+                        <div class="ui vertical animated button" tabindex="0">
                             <div class="hidden content">Buy</div>
                             <div class="visible content">
                                 <i class="shop icon"></i>

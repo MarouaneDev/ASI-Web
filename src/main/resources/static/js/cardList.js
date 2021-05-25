@@ -5,6 +5,7 @@ function displayCards(cardList) {
         let clone = document.importNode(template.content, true);
 
         newContent = clone.firstElementChild.innerHTML
+            .replace(/{{id}}/g, card.id)
             .replace(/{{family_name}}/g, card.family)
             .replace(/{{img_src}}/g, card.imgurl)
             .replace(/{{name}}/g, card.name)
@@ -21,19 +22,20 @@ function displayCards(cardList) {
     }
 }
 
-
-function buyCard(cardId){
+function sellCard(cardId){
+    console.log("Le cardId: "+cardId);
     $.ajax({
         type: 'POST',
         url: '/buy/carte/'+cardId,
         data: {
-            'userId': document.getElementById("userNameId").innerText,
+            'userId': document.getElementById("userUsername").innerText,
         },
-        success: function(msg){
-            alert('Card with ID ' + cardId + ' has been successfully bought');
-        }
+    }).done(function (data) {
+        console.log("re test");
     });
 }
+
+
 
 $.ajax({
     url: "/cartes",

@@ -36,8 +36,10 @@ public class UserService {
         return mapperService.UserToDTO(user);
     }
 
-    public User getUser(String username) {
+    public User getUserByUsername(String username) {
         User user = uRepository.findByUsername(username);
+        System.out.println("Utilisateur : s'affiche en dessous nrmlt");
+        System.out.println(user);
         return user;
     }
 
