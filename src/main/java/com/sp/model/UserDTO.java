@@ -6,6 +6,7 @@ public class UserDTO {
     private String username;
     private List<Carte> ownedCards;
     private long walletAmount;
+    private String token;
 
     public String getUsername() {
         return username;
@@ -29,5 +30,11 @@ public class UserDTO {
 
     public void setWalletAmount(long walletAmount) {
         this.walletAmount = walletAmount;
+    }
+
+    public String getToken() { return token; }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

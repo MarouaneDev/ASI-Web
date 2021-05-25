@@ -11,6 +11,7 @@ public class MapperService {
         user.setUsername(userDTO.getUsername());
         user.setOwnedCards(userDTO.getOwnedCards());
         user.setWalletAmount(userDTO.getWalletAmount());
+        user.setToken(userDTO.getToken());
         return user;
     }
 
@@ -19,6 +20,7 @@ public class MapperService {
         userDTO.setUsername(user.getUsername());
         userDTO.setOwnedCards(user.getOwnedCards());
         userDTO.setWalletAmount(user.getWalletAmount());
+        userDTO.setToken(user.getToken());
         return userDTO;
     }
 }
