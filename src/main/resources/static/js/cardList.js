@@ -22,7 +22,7 @@ function displayCards(cardList) {
 }
 
 
-function buyCard(cardId, username){
+function buyCard(cardId){
     $.ajax({
         type: 'POST',
         url: '/buy/carte/'+cardId,
