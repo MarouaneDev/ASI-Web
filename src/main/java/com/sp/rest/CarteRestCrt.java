@@ -21,7 +21,7 @@ public class CarteRestCrt {
 	CarteService cService;
 	UserService uService;
 	
-	@RequestMapping(method=RequestMethod.POST,value="/carte")
+	@RequestMapping(method=RequestMethod.POST,value="/carte/add")
     public void addCarte(@RequestBody Carte carte) {
 		cService.addCarte(carte);
     }
