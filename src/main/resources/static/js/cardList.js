@@ -30,7 +30,7 @@ function buyCard(cardId){
             'userId': document.getElementById("userNameId").innerText,
         },
         success: function(msg){
-            alert('Card with ID' + cardId + ' has been successfully bought');
+            alert('Card with ID ' + cardId + ' has been successfully bought');
         }
     });
 }
