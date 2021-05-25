@@ -12,13 +12,27 @@ function displayCards(cardList) {
             .replace(/{{hp}}/g, card.hp)
             .replace(/{{energy}}/g, card.energy)
             .replace(/{{attack}}/g, card.attack)
-            .replace(/{{defense}}/g, card.defense)
+            .replace(/{{defence}}/g, card.defence)
             .replace(/{{price}}/g, card.price);
         clone.firstElementChild.innerHTML = newContent;
 
         let cardContainer = document.querySelector("#tableContent");
         cardContainer.appendChild(clone);
     }
+}
+
+
+function buyCard(cardId, username){
+    $.ajax({
+        type: 'POST',
+        url: '/buy/carte/'+cardId,
+        data: {
+            'userId': document.getElementById("userNameId").innerText,
+        },
+        success: function(msg){
+            alert('Card with ID' + cardId + ' has been successfully bought');
+        }
+    });
 }
 
 $.ajax({

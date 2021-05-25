@@ -27,8 +27,8 @@
     <h3 class="ui left floated header">
         <i class="money icon"></i>
         <div class="content">
-            SELL
-            <div class="sub header">Sell your card to get money</div>
+            BUY
+            <div class="sub header">Buy your card and spend your money</div>
         </div>
     </h3>
 </div>
@@ -69,8 +69,8 @@
                     <td>{{attack}}</td>
                     <td>{{price}}</td>
                     <td>
-                        <div class="ui vertical animated button" tabindex="0">
-                            <div class="hidden content">Sell</div>
+                        <a onclick="buyCard({{id}})"><div class="ui vertical animated button" tabindex="0"></a>
+                            <div class="hidden content">Buy</div>
                             <div class="visible content">
                                 <i class="shop icon"></i>
                             </div>
@@ -97,7 +97,12 @@
 <script src="./js/library.js"></script>
 <script src="./js/cardList.js"></script>
 
-
+<script>
+    loginCheck();
+    $(function(){
+        $("#card").load("./part/card-full.html");
+    });
+</script>
 
 </body>
 </html>
