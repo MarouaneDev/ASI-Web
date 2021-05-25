@@ -6,18 +6,24 @@ import com.sp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Service
 public class UserService {
+
+    private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
+    private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder();
+
     @Autowired
     UserRepository uRepository;
     @Autowired
     MapperService mapperService;
-    public boolean login(String username, String password) {
-        User user = uRepository.findByUsernameAndPassword(username, password);
-        return user != null;
+    public User login(String username, String password) {
+        User user = uRepository.findByEmailAndPassword(username, password);
+        return user;
     }
 
     public UserDTO getUserDTO(String username) {
@@ -48,6 +54,7 @@ public class UserService {
 
     public boolean addUser(User user) {
         try {
+            user.setToken(generateNewToken());
             uRepository.save(user);
         } catch (Exception e) {
             return false;
@@ -63,5 +70,16 @@ public class UserService {
             usersDTO.add(userDTO);
         }
         return usersDTO;
+    }
+
+    public static String generateNewToken() {
+        byte[] randomBytes = new byte[24];
+        secureRandom.nextBytes(randomBytes);
+        return base64Encoder.encodeToString(randomBytes);
+    }
+
+    public boolean loginCheck(User user) {
+        User userToCheck = uRepository.findByToken(user.getToken());
+        return userToCheck != null;
     }
 }

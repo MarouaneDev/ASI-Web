@@ -15,6 +15,7 @@ public class User {
     protected String username;
     protected String email;
     protected String password;
+    protected String token;
     @OneToMany
     protected List<Carte> ownedCards;
     protected long walletAmount;
@@ -32,6 +33,20 @@ public class User {
         this.password = password;
         this.ownedCards = new ArrayList<>();
         this.walletAmount = 0;
+    }
+    /**
+     * @param username
+     * @param email
+     * @param password
+     * @param token
+     */
+    public User(String username, String email, String password, String token) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.ownedCards = new ArrayList<>();
+        this.walletAmount = 0;
+        this.token = token;
     }
 
     /**
@@ -63,6 +78,12 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getToken() { return token; }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public long getWalletAmount() {
@@ -110,8 +131,9 @@ public class User {
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", ownedCards=" + ownedCards +
-                ", walletAmount=" + walletAmount +
+                ", ownedCards=" + ownedCards  + '\'' +
+                ", walletAmount=" + walletAmount  + '\'' +
+                ", token=" + token +
                 '}';
     }
 }
