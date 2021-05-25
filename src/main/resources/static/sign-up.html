@@ -51,7 +51,6 @@
                 var confirm_password = $("#confirmation");
 
                 function validatePassword(){
-                console.log(confirm_password.val());
                   if(password.val() !== confirm_password.val()) {
                     confirm_password[0].setCustomValidity("Mots de passes différents");
                     confirm_password[0].reportValidity();
@@ -84,8 +83,7 @@
                         contentType: 'application/json'
                     }).done(function (data) {
                         if (data && (data != 'null')) {
-                            setCookie("token", data, 1);
-                            $(location).attr('href', '/cardList.html');
+                            $(location).attr('href', '/index.html');
                         }
                     });
 

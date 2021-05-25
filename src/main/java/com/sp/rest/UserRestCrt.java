@@ -26,7 +26,13 @@ public class UserRestCrt {
     }
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    public boolean login(@RequestBody User user) {
-        return userService.login(user.getUsername(), user.getPassword());
+    public String login(@RequestBody User user) {
+        User userToCheck = userService.login(user.getEmail(), user.getPassword());
+        return userToCheck.getToken();
+    }
+
+    @RequestMapping(value="/login-check", method = RequestMethod.POST)
+    public boolean loginCheck(@RequestBody User user) {
+        return userService.loginCheck(user);
     }
 }

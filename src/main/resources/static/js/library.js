@@ -21,3 +21,27 @@ function getCookie(name) {
 function eraseCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+
+function loginCheck() {
+    if (getCookie('token') == null) {
+        $(location).attr('href', '/index.html');
+    } else {
+        var formData = {
+            "token": getCookie("token")
+        }
+        $.ajax({
+            type: "POST",
+            url: "/user/login-check",
+            data: JSON.stringify(formData),
+            dataType: "json",
+            contentType: 'application/json'
+        }).done(function (data) {
+            if (data) {
+                setCookie("token", data, 1);
+                return true
+            } else {
+                $(location).attr('href', '/index.html');
+            }
+        });
+    }
+}

@@ -21,9 +21,9 @@ public class UserService {
     UserRepository uRepository;
     @Autowired
     MapperService mapperService;
-    public boolean login(String username, String password) {
-        User user = uRepository.findByUsernameAndPassword(username, password);
-        return user != null;
+    public User login(String username, String password) {
+        User user = uRepository.findByEmailAndPassword(username, password);
+        return user;
     }
 
     public UserDTO getUserDTO(String username) {
@@ -76,5 +76,10 @@ public class UserService {
         byte[] randomBytes = new byte[24];
         secureRandom.nextBytes(randomBytes);
         return base64Encoder.encodeToString(randomBytes);
+    }
+
+    public boolean loginCheck(User user) {
+        User userToCheck = uRepository.findByToken(user.getToken());
+        return userToCheck != null;
     }
 }

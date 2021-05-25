@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="./lib/Semantic-UI-CSS-master/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="./css/custom.css">
         <script src="./lib/jquery-3.3.1.min.js"></script>
-        <script src="./js/cookie.js"></script>
+        <script src="./js/library.js"></script>
     </head>
 
     <body>
@@ -21,40 +21,46 @@
             <div class="column"></div>
             <div class="column"></div>
             <div class="column">
-                <form class="ui form" action="./users" method="POST">
-                    <h3 class="ui dividing header">Connect you</h3>
+                <form class="ui form" action="#" method="POST">
+                    <h3 class="ui dividing header">Se connecter</h3>
                     <div class="field">
-                        <label>Surname</label>
-                        <input type="text" name="surname" placeholder="Surname" id="surname">
+                        <label>Email</label>
+                        <input type="text" name="email" placeholder="Email" id="email">
                     </div>
                     <div class="field">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="Password" id="password">
+                        <label>Mot de passe</label>
+                        <input type="password" name="password" placeholder="Mot de passe" id="password">
                     </div>
 
-                    <button class="ui button" type="submit" >Connection</button>
+                    <button class="ui button" type="submit" >Connexion</button>
                 </form>
             </div>
         </div>
         <script>
             $(document).ready(function () {
                 $("form").submit(function (event) {
-                    var formData = "surname="+$("#surname").val()+"&"+"password="+$("#password").val();
+                event.preventDefault();
+
+                    var formData = {
+                        "email": $("#email").val(),
+                        "password": $("#password").val()
+                    }
 
                     $.ajax({
-                        type: "GET",
-                        url: "/login",
-                        data: formData,
+                        type: "POST",
+                        url: "/user/login",
+                        data: JSON.stringify(formData),
                         dataType: "json",
                         contentType: 'application/json'
-                    }).done(function (data) {
-                        if (data && (data != 'null')) {
-                            setCookie("token", data, 1);
-                            $(location).attr('href', '/card.html');
+                    }).always(function (data) {
+                        if (data.responseText && (data.responseText != null)) {
+                            setCookie("token", data.responseText, 1);
+                            $(location).attr('href', '/cardList.html');
+                        } else {
+                            $('#password')[0].setCustomValidity("Mauvais identifiants");
+                            $('#password')[0].reportValidity();
                         }
                     });
-
-                    event.preventDefault();
                 });
             });
         </script>
