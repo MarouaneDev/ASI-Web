@@ -6,7 +6,7 @@ $ mvn package
 
 Then build the docker image 
 ```
-$ docker build -t asi/user-service
+$ docker build . -t asi/user-service
 ```
 
 And run it 
