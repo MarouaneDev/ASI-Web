@@ -8,6 +8,12 @@ services:
     build: UserService
     networks:
       - asi-network
+    ports:
+      - "8081:8080"
+  asi-auth-service:
+    build: AuthService
+    networks:
+      - asi-network
   reverse-proxy:
     build: ReverseProxy
     ports:

@@ -27,7 +27,7 @@ public class AuthService {
 
     public UserToken addUserToken(UserToken userToken) {
         try {
-            UserToken user = userTokenRepository.findByUserId(userToken.getUserId());
+            UserToken user = userTokenRepository.findByEmail(userToken.getEmail());
 
             if (user != null) {
                 user.setToken(generateNewToken());

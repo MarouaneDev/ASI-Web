@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserTokenRepository extends CrudRepository<UserToken, Integer> {
     public UserToken findByToken(String token);
-    public UserToken findByUserId(int userId);
+    public UserToken findByEmail(String email);
 }

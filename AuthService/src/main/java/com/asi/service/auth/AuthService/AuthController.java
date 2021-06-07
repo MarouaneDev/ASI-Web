@@ -14,7 +14,6 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
-
     @RequestMapping(value="/login-check", method = RequestMethod.POST)
     public boolean loginCheck(@RequestBody UserToken userToken) {
         return authService.loginCheck(userToken.getToken());
@@ -29,9 +28,8 @@ public class AuthController {
     public String generateToken(@RequestBody UserToken userToken) {
         return authService.addUserToken(userToken).getToken();
     }
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<UserToken> listUserToken() {
         return authService.list();
     }
-
 }

@@ -1,27 +1,38 @@
 package com.asi.service.auth.AuthService;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
 
 @Entity
 public class UserToken {
     @Id
     @GeneratedValue
     protected int id;
-    protected int userId;
+    //protected int userId;
+    @NotNull
+    protected String email;
+    @NotNull
     protected String token;
 
     public int getId() {
         return id;
     }
+//
+//    public int getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    }
 
-    public int getUserId() {
-        return userId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getToken() {
