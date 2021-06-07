@@ -4,26 +4,27 @@ import com.asi.service.user.UserService.model.User;
 import com.asi.service.user.UserService.model.UserDTO;
 import com.asi.service.user.UserService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-
-import java.security.SecureRandom;
+import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 @Service
 public class UserService {
 
-    private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
-    private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder();
-
+    private static final String authServiceURL = "http://asi-auth-service:8080/";
+    private static final RestTemplate restTemplate = new RestTemplate();
+    private static final HttpHeaders headers = new HttpHeaders();
     @Autowired
     UserRepository uRepository;
     @Autowired
     MapperService mapperService;
+
     public User login(String username, String password) {
-        User user = uRepository.findByEmailAndPassword(username, password);
-        return user;
+        return uRepository.findByEmailAndPassword(username, password);
     }
 
     public UserDTO getUserDTO(String username) {
@@ -37,13 +38,11 @@ public class UserService {
     }
 
     public User getUser(String username) {
-        User user = uRepository.findByUsername(username);
-        return user;
+        return uRepository.findByUsername(username);
     }
 
     public User getUser(int userId) {
-        User user = uRepository.findById(userId);
-        return user;
+        return uRepository.findById(userId);
     }
 
     public String addUser(String username, String email, String password) {
@@ -54,9 +53,10 @@ public class UserService {
 
     public boolean addUser(User user) {
         try {
-            user.setToken(generateNewToken());
+            user.setToken(generateNewToken(user.getEmail()));
             uRepository.save(user);
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
         return true;
@@ -72,15 +72,22 @@ public class UserService {
         return usersDTO;
     }
 
-    public static String generateNewToken() {
-        byte[] randomBytes = new byte[24];
-        secureRandom.nextBytes(randomBytes);
-        return base64Encoder.encodeToString(randomBytes);
+    public static String generateNewToken(String email) {
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity = new HttpEntity<>("{\n" +
+                "    \"email\": \""+email+"\"\n" +
+                "}", headers);
+        return restTemplate.postForObject(authServiceURL+"auth/generate-token", entity, String.class);
     }
 
-    public boolean loginCheck(User user) {
-        User userToCheck = uRepository.findByToken(user.getToken());
-        return userToCheck != null;
+    public boolean loginCheck(String token) {
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity = new HttpEntity<>("{\n" +
+                "    \"token\": \""+token+"\"\n" +
+                "}", headers);
+        String response = restTemplate.postForObject(authServiceURL+"auth/login-check", entity, String.class);
+        return Boolean.parseBoolean(response);
+//        return response;
     }
 
     public User findByToken(String token) {

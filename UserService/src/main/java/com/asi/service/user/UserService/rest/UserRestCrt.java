@@ -36,7 +36,7 @@ public class UserRestCrt {
 
     @RequestMapping(value="/login-check", method = RequestMethod.POST)
     public boolean loginCheck(@RequestBody User user) {
-        return userService.loginCheck(user);
+        return userService.loginCheck(user.getToken());
     }
 
     @RequestMapping(value="/token", method = RequestMethod.POST)
