@@ -18,6 +18,9 @@ services:
     build: ReverseProxy
     ports:
       - "80:80"
+    depends_on:
+      - asi-front
+      - asi-user-service
     networks:
       - asi-network
 
