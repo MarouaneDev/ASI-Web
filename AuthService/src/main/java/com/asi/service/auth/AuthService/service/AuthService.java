@@ -1,7 +1,7 @@
 package com.asi.service.auth.AuthService.service;
 
 
-import com.asi.service.auth.AuthService.model.UserToken;
+import com.asi.service.auth.AuthService.model.User;
 import com.asi.service.auth.AuthService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,30 +22,37 @@ public class AuthService {
         return userTokenRepository.findByToken(userToken) != null;
     }
 
-    public UserToken findByToken(String userToken) {
+    public User findByToken(String userToken) {
         return userTokenRepository.findByToken(userToken);
     }
 
-    public UserToken addUserToken(UserToken userToken) {
+    public boolean addUser(User user) {
         try {
-            UserToken user = userTokenRepository.findByEmail(userToken.getEmail());
-
-            if (user != null) {
-                user.setToken(generateNewToken());
-                userTokenRepository.save(user);
-                return user;
-            }
-
-            userToken.setToken(generateNewToken());
-            userTokenRepository.save(userToken);
+            userTokenRepository.save(user);
         } catch (Exception e) {
-            return new UserToken();
+            e.printStackTrace();
+            return false;
         }
-        return userToken;
+        return true;
     }
 
-    public List<UserToken> list() {
-        return (List<UserToken>) userTokenRepository.findAll();
+    public User generateToken(User user) {
+        if (userTokenRepository.findByEmail(user.getEmail()) != null) {
+            return user;
+        }
+
+        user.setToken(generateNewToken());
+        try {
+            userTokenRepository.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    public List<User> list() {
+        return (List<User>) userTokenRepository.findAll();
     }
 
     public static String generateNewToken() {
@@ -53,7 +60,4 @@ public class AuthService {
         secureRandom.nextBytes(randomBytes);
         return base64Encoder.encodeToString(randomBytes);
     }
-
-
-
 }

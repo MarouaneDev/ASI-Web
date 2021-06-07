@@ -18,13 +18,21 @@ public class UserService {
     private static final String authServiceURL = "http://asi-auth-service:8080/";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final HttpHeaders headers = new HttpHeaders();
+
     @Autowired
     UserRepository uRepository;
     @Autowired
     MapperService mapperService;
 
     public User login(String username, String password) {
-        return uRepository.findByEmailAndPassword(username, password);
+        User user = uRepository.findByEmailAndPassword(username, password);
+        user.setToken(generateNewToken(user.getEmail()));
+        try {
+            uRepository.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     public UserDTO getUserDTO(String username) {
@@ -53,7 +61,6 @@ public class UserService {
 
     public boolean addUser(User user) {
         try {
-            user.setToken(generateNewToken(user.getEmail()));
             uRepository.save(user);
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,13 +88,21 @@ public class UserService {
     }
 
     public boolean loginCheck(String token) {
+        String response = this.authLoginCheck(token);
+        return Boolean.parseBoolean(response);
+    }
+
+    /**
+     *
+     * @param token string
+     * @return string token
+     */
+    private String authLoginCheck(String token) {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>("{\n" +
                 "    \"token\": \""+token+"\"\n" +
                 "}", headers);
-        String response = restTemplate.postForObject(authServiceURL+"auth/login-check", entity, String.class);
-        return Boolean.parseBoolean(response);
-//        return response;
+        return restTemplate.postForObject(authServiceURL+"auth/login-check", entity, String.class);
     }
 
     public User findByToken(String token) {

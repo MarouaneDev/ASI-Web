@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-public class UserToken {
+public class User {
     @Id
     @GeneratedValue
 
@@ -19,14 +19,6 @@ public class UserToken {
     public int getId() {
         return id;
     }
-//
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
 
     /**
      * @return email string
