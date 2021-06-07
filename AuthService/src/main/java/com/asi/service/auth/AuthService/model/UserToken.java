@@ -1,4 +1,4 @@
-package com.asi.service.auth.AuthService;
+package com.asi.service.auth.AuthService.model;
 
 import com.sun.istack.NotNull;
 
@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class UserToken {
     @Id
     @GeneratedValue
+
     protected int id;
     //protected int userId;
     @NotNull
@@ -27,18 +28,30 @@ public class UserToken {
 //        this.userId = userId;
 //    }
 
+    /**
+     * @return email string
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @param email string
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @return token string
+     */
     public String getToken() {
         return token;
     }
 
+    /**
+     * @param token string
+     */
     public void setToken(String token) {
         this.token = token;
     }

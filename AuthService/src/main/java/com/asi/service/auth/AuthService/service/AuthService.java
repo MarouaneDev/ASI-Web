@@ -1,9 +1,10 @@
-package com.asi.service.auth.AuthService;
+package com.asi.service.auth.AuthService.service;
 
 
+import com.asi.service.auth.AuthService.model.UserToken;
+import com.asi.service.auth.AuthService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.List;
@@ -16,7 +17,7 @@ public class AuthService {
     private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder();
 
     @Autowired
-    UserTokenRepository userTokenRepository;
+    UserRepository userTokenRepository;
     public boolean loginCheck(String userToken) {
         return userTokenRepository.findByToken(userToken) != null;
     }

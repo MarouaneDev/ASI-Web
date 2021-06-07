@@ -1,5 +1,7 @@
-package com.asi.service.auth.AuthService;
+package com.asi.service.auth.AuthService.rest;
 
+import com.asi.service.auth.AuthService.service.AuthService;
+import com.asi.service.auth.AuthService.model.UserToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
