@@ -3,4 +3,4 @@ jdk: oraclejdk11
 install: 
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -f ./UserService/pom.xml
 script:
-  - mvn test -B #-f UserService/pom.xml
+  - mvn test -B -f UserService/pom.xml
