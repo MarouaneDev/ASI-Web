@@ -26,8 +26,8 @@ public class UserService {
 
     public User login(String username, String password) {
         User user = uRepository.findByEmailAndPassword(username, password);
-        user.setToken(generateNewToken(user.getEmail()));
         try {
+            user.setToken(generateNewToken(user.getEmail()));
             uRepository.save(user);
         } catch (Exception e) {
             e.printStackTrace();
