@@ -1,3 +1,4 @@
 language: java
+jdk: oraclejdk11
 script:
-  - ./mvnw test -B
+  - mvn test -B
