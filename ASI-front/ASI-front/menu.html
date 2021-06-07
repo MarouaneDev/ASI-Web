@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main menu</title>
+    <link rel="stylesheet" type="text/css" href="./lib/Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/custom.css">
+    <script src="./lib/jquery-3.3.1.min.js"></script>
+    <script src="./js/library.js"></script>
+</head>
+<body>
+<div class="ui clearing segment">
+    <h3 class="ui right floated header">
+        <i class="user circle outline icon"></i>
+        <div class="content">
+            <span id="userUsername"></span>
+            <div class="sub header"><span id="userWallet"></span>$</div>
+        </div>
+    </h3>
+
+    <h3 class="ui left floated header">
+        <i class="money icon"></i>
+        <div class="content">
+            Menu
+            <div class="sub header">Main Menu</div>
+        </div>
+    </h3>
+</div>
+<div class="ui center aligned column centered grid">
+    <div class="ui big button">
+        <!--        replace with card_sell path -->
+        <a href="./cardList.html">SELL</a><i class="money bill alternate outline icon"></i>
+    </div>
+
+    <div class="ui big button">
+        <!--        replace with card_buy path -->
+
+        <a href="./cardList.html">BUY</a><i class="shopping cart icon"></i>
+    </div>
+
+    <div class="ui big button">
+        <a href="#">PLAY</a> <i class="money bill alternate outline icon"></i>
+
+    </div>
+</div>
+<script>
+    loginCheck();
+    getUser();
+</script>
+</body>
+</html>

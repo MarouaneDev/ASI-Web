@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  asi-front:
+    build: ASI-front
+    networks:
+      - asi-network
+  asi-user-service:
+    build: UserService
+    networks:
+      - asi-network
+  asi-auth-service:
+    build: AuthService
+    networks:
+      - asi-network
+  asi-card-service:
+    build: CardServicee
+    networks:
+      - asi-network
+  reverse-proxy:
+    build: ReverseProxy
+    ports:
+      - "80:80"
+    depends_on:
+      - asi-front
+      - asi-user-service
+      - asi-card-service
+      - asi-auth-service
+    networks:
+      - asi-network
+
+networks:
+  asi-network:
+    external: false
