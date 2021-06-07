@@ -1,4 +1,6 @@
 FROM adoptopenjdk/openjdk11
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+RUN mkdir /build-room
+COPY . /build-room/
+WORKDIR /build-room
+#RUN ./mvnw package
+ENTRYPOINT ["java","-jar","-Dserver.tomcat.protocol_header=x-forwarded-proto","-Dserver.tomcat.remote_ip_header=x-forwarded-for","/build-auth/target/RoomService-0.0.1-SNAPSHOT.jar"]
