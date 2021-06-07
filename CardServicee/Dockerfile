@@ -1,4 +1,6 @@
 FROM adoptopenjdk/openjdk11
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+RUN mkdir /build-card
+COPY . /build-card/
+WORKDIR /build-card
+#RUN ./mvnw package
+ENTRYPOINT ["java","-jar","-Dserver.tomcat.protocol_header=x-forwarded-proto","-Dserver.tomcat.remote_ip_header=x-forwarded-for","/build-card/target/CardService-0.0.1-SNAPSHOT.jar"]

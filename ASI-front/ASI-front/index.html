@@ -55,7 +55,7 @@
                     }).always(function (data) {
                         if (data.responseText && (data.responseText != null)) {
                             setCookie("token", data.responseText, 1);
-                            $(location).attr('href', '/menu.html');
+                            $(location).attr('href', '/public/menu.html');
                         } else {
                             $('#password')[0].setCustomValidity("Mauvais identifiants");
                             $('#password')[0].reportValidity();

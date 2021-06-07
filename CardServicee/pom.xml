@@ -8,11 +8,11 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.asi.service.user</groupId>
-	<artifactId>UserService</artifactId>
+	<groupId>com.asi.service.card</groupId>
+	<artifactId>CardService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>UserService</name>
-	<description>Micro Service for users</description>
+	<name>CardService</name>
+	<description>Micro Service for card</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

@@ -24,7 +24,7 @@ function eraseCookie(name) {
 
 function loginCheck() {
     if (getCookie('token') == null) {
-        $(location).attr('href', '/index.html');
+        $(location).attr('href', '/public/index.html');
     } else {
         var formData = {
             "token": getCookie("token")
@@ -48,7 +48,7 @@ function loginCheck() {
 
 function getUser() {
     if (getCookie('token') == null) {
-        $(location).attr('href', '/index.html');
+        $(location).attr('href', '/public/index.html');
     } else {
         var formData = {
             "token": getCookie("token")

@@ -21,18 +21,18 @@ public class CarteRestCrt {
 	CarteService cService;
 	UserService uService;
 	
-	@RequestMapping(method=RequestMethod.POST,value="/carte/add")
+	@RequestMapping(method=RequestMethod.POST,value="/add")
     public void addCarte(@RequestBody Carte carte) {
 		cService.addCarte(carte);
     }
 	
-	@RequestMapping(method=RequestMethod.GET,value="/carte/{id}")
+	@RequestMapping(method=RequestMethod.GET,value="/{id}")
     public Carte getCarte(@PathVariable String id) {
         Carte c=cService.getCarte(Integer.valueOf(id));
         return c;
     }
 	
-	@RequestMapping(method=RequestMethod.GET,value="/cartes")
+	@RequestMapping(method=RequestMethod.GET,value="/list")
     public List<Carte> listCarte() {
 		List<Carte> allcards = cService.listCarte();
 		if(allcards.isEmpty()) {
@@ -42,7 +42,7 @@ public class CarteRestCrt {
 		}
     }
 	
-	@RequestMapping(method=RequestMethod.POST,value="/buy/carte/{cardId}")
+	@RequestMapping(method=RequestMethod.POST,value="/buy/{cardId}")
     public void buyCard(@PathVariable String cardId, int userId) {
         Carte c = cService.getCarte(Integer.valueOf(cardId));
         User u = uService.getUser(userId);
@@ -50,7 +50,7 @@ public class CarteRestCrt {
 		
     }
 	
-	@RequestMapping(method=RequestMethod.POST,value="/sell/carte/{cardId}")
+	@RequestMapping(method=RequestMethod.POST,value="/sell/{cardId}")
     public void sellCard(@PathVariable String cardId, String userId) {
 		Carte c = cService.getCarte(Integer.valueOf(cardId));
         User u = uService.getUser(Integer.valueOf(userId));
