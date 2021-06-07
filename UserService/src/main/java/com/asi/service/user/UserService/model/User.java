@@ -128,7 +128,7 @@ public class User {
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", ownedCards=" + ownedCards  + '\'' +
+                /*", ownedCards=" + ownedCards  + '\'' +*/
                 ", walletAmount=" + walletAmount  + '\'' +
                 ", token=" + token +
                 '}';
