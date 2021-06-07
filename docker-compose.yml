@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  asi-front:
+    build: ASI-front
+    networks:
+      - asi-network
+  asi-user-service:
+    build: UserService
+    networks:
+      - asi-network
+  reverse-proxy:
+    build: ReverseProxy
+    ports:
+      - "80:80"
+    networks:
+      - asi-network
+
+networks:
+  asi-network:
+    external: false
