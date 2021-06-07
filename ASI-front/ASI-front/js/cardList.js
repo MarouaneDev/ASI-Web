@@ -25,7 +25,7 @@ function displayCards(cardList) {
 function buyCard(cardId){
     $.ajax({
         type: 'POST',
-        url: '/buy/carte/'+cardId,
+        url: '/card/buy/'+cardId,
         data: {
             'userId': document.getElementById("userNameId").innerText,
         },
@@ -36,7 +36,7 @@ function buyCard(cardId){
 }
 
 $.ajax({
-    url: "/cartes",
+    url: "/card/list",
     contentType: "application/json",
     context: document.body
 }).done(function(response) {

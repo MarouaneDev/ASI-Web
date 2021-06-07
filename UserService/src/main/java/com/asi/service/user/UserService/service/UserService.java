@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private static final String authServiceURL = "http://asi-auth-service:8080/";
+    private static final String authServiceURL = "http://asi-auth-service:8083/";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final HttpHeaders headers = new HttpHeaders();
 
@@ -84,7 +84,7 @@ public class UserService {
         HttpEntity<String> entity = new HttpEntity<>("{\n" +
                 "    \"email\": \""+email+"\"\n" +
                 "}", headers);
-        return restTemplate.postForObject(authServiceURL+"auth/generate-token", entity, String.class);
+        return restTemplate.postForObject(authServiceURL+"generate-token", entity, String.class);
     }
 
     public boolean loginCheck(String token) {
@@ -102,7 +102,7 @@ public class UserService {
         HttpEntity<String> entity = new HttpEntity<>("{\n" +
                 "    \"token\": \""+token+"\"\n" +
                 "}", headers);
-        return restTemplate.postForObject(authServiceURL+"auth/login-check", entity, String.class);
+        return restTemplate.postForObject(authServiceURL+"login-check", entity, String.class);
     }
 
     public User findByToken(String token) {
