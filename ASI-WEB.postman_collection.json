@@ -1,0 +1,871 @@
+{
+	"info": {
+		"_postman_id": "448b350c-d2f0-46c0-ab36-b68ae612ffcc",
+		"name": "ASI-WEB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Scénario",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "APP_ADMIN_REMEMBER_ME=QXBwXEVudGl0eVxVc2VyXEFkbWluVXNlcjpZV1J0YVc1QWFXNTBaV2R5WVd3dVpuST06MTY1MTMzMTU3ODpiMTc2NmZhMjcyNzM3YTMxNWFiMTdjODVkMTQ3OTYzM2Q4ZDFjMjBjNjE0NTkzMjQ1NGQzZTIxYzExZTYwYWI5; PHPSESSID=6hm2st8ot3vfhp4rshlbajo927",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"daryl\",\n    \"email\": \"daryl@laposte.net\",\n    \"password\": \"daryl\",\n    \"ownedCards\": [\n        10000,\n        20000,\n        30000\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/user/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:80/user/list",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"daryl@laposte.net\",\n    \"password\": \"daryl\"\n}"
+						},
+						"url": {
+							"raw": "localhost:80/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cards by user token (UPDATE TOKEN)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ownedCards\": [\n        1,\n        2\n    ]\n}"
+						},
+						"url": {
+							"raw": "localhost:80/user/cards/9YczIp3NOXVT9727xu7GxoKt_yLzLtx4",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"cards",
+								"9YczIp3NOXVT9727xu7GxoKt_yLzLtx4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List User (token updated)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:80/user/list",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Darkrai\",\n    \"description\": \"Pokemon tenebre de type sympathique\",\n    \"imgurl\": \"https://imgur.com/gallery/cnu2RrM\",\n    \"family\": \"dark\",\n    \"affinity\": \"specter,psychic\",\n    \"hp\": 68,\n    \"energy\": 100,\n    \"attack\": 50,\n    \"defence\": 40,\n    \"price\": 18\n}"
+						},
+						"url": {
+							"raw": "localhost:80/card/add",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Cards",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/card/list",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Add a User",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"anyone\",\n    \"email\": \"any@any.any\",\n    \"password\": \"anyone\",\n    \"ownedCards\": [\n        40000 \n    ]\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:80/user/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/user/list",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List cards by user token (belonging to user)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/user/cards/{token}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"cards",
+								"{token}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List cards by user token (belonging to user) Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/user/cards/{token}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"cards",
+								"{token}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find user by token",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"9YczIp3NOXVT9727xu7GxoKt_yLzLtx4\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:80/user/login-check",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"login-check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"daryl@laposte.net\",\n    \"password\": \"daryl\"\n}"
+						},
+						"url": {
+							"raw": "localhost:80/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Check",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"token\" \n}"
+						},
+						"url": {
+							"raw": "localhost:80/user/login-check",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"user",
+								"login-check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Card",
+			"item": [
+				{
+					"name": "List cards",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/card/list",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Card attribute list (\"show\")",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/card/10000",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"10000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Darkrai\",\n    \"description\": \"Pokemon tenebre de type sympathique\",\n    \"imgurl\": \"https://imgur.com/gallery/cnu2RrM\",\n    \"family\": \"dark\",\n    \"affinity\": \"specter,psychic\",\n    \"hp\": 68,\n    \"energy\": 100,\n    \"attack\": 50,\n    \"defence\": 40,\n    \"price\": 18\n}"
+						},
+						"url": {
+							"raw": "localhost:80/card/add",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buy card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1\n}"
+						},
+						"url": {
+							"raw": "localhost:80/card/buy/10000",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"buy",
+								"10000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sell card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 10000\n}"
+						},
+						"url": {
+							"raw": "localhost:80/card/sell/10000",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"card",
+								"sell",
+								"10000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "List Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:80/auth/list",
+							"host": [
+								"localhost"
+							],
+							"port": "80",
+							"path": [
+								"auth",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate token",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"any@any.any\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:80/auth/generate-token",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"auth",
+								"generate-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"any@any.any\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:80/auth/add-user",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"auth",
+								"add-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check login with",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"token\"\n}"
+						},
+						"url": {
+							"raw": "127.0.0.1:80/auth/login-check",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"auth",
+								"login-check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "List rooms",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "127.0.0.1:80/room/list",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "80",
+							"path": [
+								"room",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
