@@ -113,7 +113,6 @@ public class UserService {
     public String getCartesUser(String token) {
         User user = findByToken(token);
         List<Integer> cartes = user.getOwnedCards();
-        System.out.println(cartes.toString());
         headers.setContentType(MediaType.APPLICATION_JSON);
         StringBuilder stringBuilder = new StringBuilder();
         String response = "";
@@ -132,7 +131,6 @@ public class UserService {
             i++;
         }
 
-        System.out.println(stringBuilder.toString());
 
         return "["+stringBuilder.toString()+"]";
     }
