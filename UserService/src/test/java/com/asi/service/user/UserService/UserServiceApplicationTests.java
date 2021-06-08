@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserServiceApplicationTests {
 
     //Used to populate the database  and test the addUser method
