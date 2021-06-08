@@ -29,14 +29,12 @@ public class RoomService {
 
     public void createRoom(Room room) {
         Room createdRoom=roomRepository.save(room);
-        System.out.println(createdRoom);
     }
 
     public void joinRoom(Room room, User user){
         List<User> users = room.getPlayerList();
         users.add(user);
         room.setPlayerList(users);
-        System.out.println(user.getUsername()+" joined the room "+room.getRoomName());
     }
 
     public void exitRoom(Room room, User user){
@@ -45,7 +43,6 @@ public class RoomService {
             User userToExit= iterator.next();
             if (userToExit.getEmail().equals(user.getEmail())) {
                 iterator.remove();
-                System.out.println(user.getUsername()+" has left the room.");
             }
         }
     }
