@@ -25,8 +25,8 @@ public class UserService {
     @Autowired
     MapperService mapperService;
 
-    public User login(String username, String password) {
-        User user = uRepository.findByEmailAndPassword(username, password);
+    public User login(String email, String password) {
+        User user = uRepository.findByEmailAndPassword(email, password);
         user.setToken(generateNewToken(user.getEmail()));
         try {
             uRepository.save(user);

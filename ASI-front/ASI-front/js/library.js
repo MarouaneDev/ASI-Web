@@ -31,7 +31,7 @@ function loginCheck() {
         }
         $.ajax({
             type: "POST",
-            url: "/user/login-check",
+            url: "/auth/login-check",
             data: JSON.stringify(formData),
             dataType: "json",
             contentType: 'application/json'

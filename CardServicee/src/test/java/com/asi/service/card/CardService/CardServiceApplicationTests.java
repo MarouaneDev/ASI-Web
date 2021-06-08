@@ -43,7 +43,7 @@ class CardServiceApplicationTests {
 	@Test
 	@Order(2)
 	void listCarteTest(){
-		assertEquals(1, cardService.listCarte().size());
+		assertEquals(4, cardService.listCarte().size());
 	}
 
 	@Test
