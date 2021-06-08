@@ -16,6 +16,7 @@ import java.util.List;
 public class UserService {
 
     private static final String authServiceURL = "http://asi-auth-service:8083/";
+    private static final String carteServiceURL = "http://asi-card-service:8082/";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final HttpHeaders headers = new HttpHeaders();
 
@@ -107,5 +108,30 @@ public class UserService {
 
     public User findByToken(String token) {
         return uRepository.findByToken(token);
+    }
+
+    public String getCartesUser(String token) {
+        User user = findByToken(token);
+        List<Integer> cartes = user.getOwnedCards();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        StringBuilder stringBuilder = new StringBuilder();
+        String response = "";
+
+        int i = 0;
+        for (Integer carte : cartes) {
+            try {
+                response = restTemplate.getForObject(carteServiceURL + carte, String.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            stringBuilder.append(response);
+            if (i < cartes.size()-1) {
+                stringBuilder.append(",");
+            }
+            i++;
+        }
+
+
+        return "["+stringBuilder.toString()+"]";
     }
 }
