@@ -16,6 +16,10 @@ services:
     build: CardServicee
     networks:
       - asi-network
+  asi-room-service:
+    build: RoomService
+    networks:
+      - asi-network
   reverse-proxy:
     build: ReverseProxy
     ports:
@@ -25,6 +29,7 @@ services:
       - asi-user-service
       - asi-card-service
       - asi-auth-service
+      - asi-room-service
     networks:
       - asi-network
 
