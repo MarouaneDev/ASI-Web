@@ -34,11 +34,5 @@ function buyCard(cardId){
         }
     });
 }
-
-$.ajax({
-    url: "/card/by-user",
-    contentType: "application/json",
-    context: document.body
-}).done(function(response) {
-    displayCards(response);
-});
+console.log('here');
+console.log(getUserData());

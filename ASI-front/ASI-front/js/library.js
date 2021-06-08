@@ -67,3 +67,28 @@ function getUser() {
         });
     }
 }
+
+function getUserData() {
+    if (getCookie('token') == null) {
+        $(location).attr('href', '/public/index.html');
+    } else {
+        var formData = {
+            "token": getCookie("token")
+        }
+        var user;
+        $.ajax({
+            type: "POST",
+            url: "/user/token",
+            data: JSON.stringify(formData),
+            dataType: "json",
+            contentType: 'application/json'
+        }).done(function (data) {
+            if (data) {
+                console.log(data);
+                user = data;
+            }
+        });
+
+        return user;
+    }
+}
