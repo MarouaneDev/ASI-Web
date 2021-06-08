@@ -21,7 +21,6 @@ public class CarteService {
 	
 	public void addCarte(Carte c) {
 		Carte createdCarte=cRepository.save(c);
-		System.out.println(createdCarte);
 	}
 	
 	public Carte getCarte(int id) {
