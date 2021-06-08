@@ -1,3 +1,3 @@
-INSERT INTO Room (id, room_name) values ('1', 'Red Room');
-INSERT INTO Room (id, room_name) values ('2', 'Daryl Room');
-INSERT INTO Room (id, room_name) values ('3', 'OkayMany R00M');
+INSERT INTO Room (id, room_name) values ('10000', 'Red Room');
+INSERT INTO Room (id, room_name) values ('20000', 'Daryl Room');
+INSERT INTO Room (id, room_name) values ('30000', 'OkayMany R00M');

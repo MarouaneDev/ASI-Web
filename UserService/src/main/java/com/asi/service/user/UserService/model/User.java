@@ -9,7 +9,9 @@ public class User {
     @Id
     @GeneratedValue
     protected int id;
+    @Column(unique = true)
     protected String username;
+    @Column(unique = true)
     protected String email;
     protected String password;
     protected String token;
