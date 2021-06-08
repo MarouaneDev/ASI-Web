@@ -25,14 +25,7 @@ class UserServiceApplicationTests {
         userService.addUser("Daryl69", "daryl69@laposte.net", "darylpwd");
         userService.addUser("paul", "paul@paul.paul", "paul");
     }
-    /*
-	@Test
-    @Order(1)
-	void addUserTest() {
-        assertEquals(user.toString(), userService.addUser(user.getUsername(), user.getEmail(), user.getPassword()));
-        assertTrue(userService.addUser(user1));
-	}
-*/
+
 	@Test
     @Order(1)
     void findByEmailTest(){
