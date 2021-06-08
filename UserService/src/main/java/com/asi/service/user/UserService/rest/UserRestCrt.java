@@ -4,10 +4,7 @@ import com.asi.service.user.UserService.model.User;
 import com.asi.service.user.UserService.model.UserDTO;
 import com.asi.service.user.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,5 +38,10 @@ public class UserRestCrt {
     @RequestMapping(value="/token", method = RequestMethod.POST)
     public User getUserByToken(@RequestBody User user) {
         return userService.findByToken(user.getToken());
+    }
+
+    @RequestMapping(value="/cards/{token}", method = RequestMethod.GET)
+    public String getUserCards(@PathVariable String token) {
+        return userService.getCartesUser(token);
     }
 }

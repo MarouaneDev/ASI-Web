@@ -17,7 +17,9 @@ public class User {
     protected List<Integer> ownedCards;
     protected long walletAmount;
 
-    public User() { }
+    public User() {
+        this.ownedCards = new ArrayList<>();
+    }
 
     /**
      * @param username
