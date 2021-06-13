@@ -28,6 +28,11 @@ Elements réalisés :
 - Travis CI : lancement des tests à chaque push + rapport Github link au rapport Travis CI
 - Mise en place de Sonarcloud + rapport Github
 - Déploiement sur une instance AWS
+- Librairie (factoriser le code commun) existe mais pas implémenter
+
+Elements non réalisés :
+- Jeu de carte
+- Librairie pas vraiment implémentée pour le moment
 
 Implication des membres :
 - 25% pour chaque membre
