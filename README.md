@@ -27,19 +27,21 @@ Elements réalisés :
 - Création de tests unitaires pour chaque microservice (au moins 1 par microservice)
 - Travis CI : lancement des tests à chaque push + rapport Github link au rapport Travis CI
 - Mise en place de Sonarcloud + rapport Github
-- Déploiement sur une instance AWS
-- Librairie (factoriser le code commun) existe mais pas implémenter
+- Déploiement sur une instance AWS à des fins pédagogique
+- Librairie (factoriser le code commun) existe mais pas implémentée
 
 Elements non réalisés :
 - Jeu de carte
 - Librairie pas vraiment implémentée pour le moment
+- Room partiellement fonctionnel
 
 Implication des membres :
 - 25% pour chaque membre
 
 Lancement du projet :
 - package de chaque micro service (mvn package)
-- build et up du dockercompose
+- ```$ docker-compose build```
+- ```$ docker-compose up```
 
 Vidéo YouTube (qualité pas géniale, dispo en WeTransfer) :
 https://youtu.be/rU867Z3aVWU
