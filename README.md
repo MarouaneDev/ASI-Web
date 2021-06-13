@@ -40,3 +40,6 @@ Implication des membres :
 Lancement du projet :
 - package de chaque micro service (mvn package)
 - build et up du dockercompose
+
+Vidéo YouTube (qualité pas géniale, dispo en WeTransfer) :
+https://youtu.be/rU867Z3aVWU
