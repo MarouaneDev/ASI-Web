@@ -37,3 +37,6 @@ Elements non réalisés :
 Implication des membres :
 - 25% pour chaque membre
 
+Lancement du projet :
+- package de chaque micro service (mvn package)
+- build et up du dockercompose
